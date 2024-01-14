@@ -154,7 +154,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 obj = inst_ssss[k]
                 setattr(obj, updatesss[2], updatesss[3])
-        storage.save()
+                storage.save()
 
     def do_count(self, arg):
         """Count all instances of a class"""
