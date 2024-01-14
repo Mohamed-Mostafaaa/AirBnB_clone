@@ -145,4 +145,4 @@ $ python3 unittest -m tests/test_console.py
 ## Authors :black_nib:
 
 - **Mohamed Mostafa** <[Mohamed-Mostafaaa](https://github.com/Mohamed-Mostafaaa)>
-- **Eman Elkamel** <[emanelkamed](https://github.com/emanelkamed)>
+- **Eman Elkamel** <[emanelkamel](https://github.com/emanelkamel)>
