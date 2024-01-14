@@ -6,13 +6,13 @@
 import json
 import os
 from models.base_model import BaseModel
-from models.user import User
 
-# from models.state import State
-# from models.city import City
-# from models.amenity import Amenity
-# from models.place import Place
-# from models.review import Review
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class FileStorage:
@@ -24,14 +24,14 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
-    classes = {
+    More_Classes = {
         "BaseModel": BaseModel,
         "User": User,
-        #     "State": State,
-        #     "City": City,
-        #     "Amenity": Amenity,
-        #     "Place": Place,
-        #     "Review": Review,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review,
     }
 
     def all(self):
@@ -59,5 +59,5 @@ class FileStorage:
             with open(FileStorage.__file_path, "r", encoding="UTF-8") as file_exist:
                 dict_nnn = json.load(file_exist)
                 for key, val in dict_nnn.items():
-                    base = FileStorage.classes[val["__class__"]](**val)
+                    base = FileStorage.More_Classes[val["__class__"]](**val)
                     FileStorage.__objects[key] = base

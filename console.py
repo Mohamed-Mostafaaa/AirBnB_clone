@@ -6,11 +6,12 @@ import cmd
 from models.base_model import BaseModel
 
 from models.user import User
-# from models.state import State
-# from models.city import City
-# from models.amenity import Amenity
-# from models.place import Place
-# from models.review import Review
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+
 from models import storage
 
 
@@ -19,24 +20,24 @@ class HBNBCommand(cmd.Cmd):
 
     intro = "Welcome to the interpreter! Type help or ? to list commands.\n"
     prompt = "(hbnb) "
-    classes = {
+    More_classes = {
         "BaseModel": BaseModel,
-                'User': User,
-        #         'State': State,
-        #         'City': City,
-        #         'Amenity': Amenity,
-        #         'Place': Place,
-        #         'Review': Review
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review,
     }
 
     def Create_Mo(self, line):
         """Creates a new object"""
         if len(line) == 0:
             print("** class name missing **")
-        elif line not in self.__class__.classes.keys():
+        elif line not in self.__class__.More_classes.keys():
             print("** class doesn't exist **")
         else:
-            obj = self.__class__.classes[line]()
+            obj = self.__class__.More_classes[line]()
             obj.save()
             print(obj.id)
 
@@ -46,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
         if len(line) == 0:
             print("** class name missing **")
             return
-        elif class_object[0] not in self.__class__.classes.keys():
+        elif class_object[0] not in self.__class__.More_classes.keys():
             print("** class doesn't exist **")
             return
         elif len(class_object) == 1:
@@ -68,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 0:
             print("** class name missing **")
             return
-        elif target_list[0] not in self.__class__.classes.keys():
+        elif target_list[0] not in self.__class__.More_classes.keys():
             print("** class doesn't exist **")
             return
         elif len(target_list) == 1:
@@ -112,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
         if len(line) == 0:
             print("** class name missing **")
             return
-        elif updatesss[0] not in __class__.classes.keys():
+        elif updatesss[0] not in __class__.More_classes.keys():
             print("** class doesn't exist **")
             return
         elif len(updatesss) == 1:
