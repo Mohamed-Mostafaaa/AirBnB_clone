@@ -56,7 +56,7 @@ class FileStorage:
         otherwise, do nothing
         """
         if os.path.exists(FileStorage.__file_path):
-            with open(FileStorage.__file_path, "r", encoding="UTF-8") as file_exist:
+            with open(FileStorage.__file_path, "r") as file_exist:
                 dict_nnn = json.load(file_exist)
                 for key, val in dict_nnn.items():
                     base = FileStorage.__More_Classes[val["__class__"]](**val)
