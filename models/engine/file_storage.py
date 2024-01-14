@@ -6,8 +6,8 @@
 import json
 import os
 from models.base_model import BaseModel
+from models.user import User
 
-# from models.user import User
 # from models.state import State
 # from models.city import City
 # from models.amenity import Amenity
@@ -24,15 +24,15 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
-    # classes = {
-    #     "BaseModel": BaseModel,
-    #     "User": User,
-    #     "State": State,
-    #     "City": City,
-    #     "Amenity": Amenity,
-    #     "Place": Place,
-    #     "Review": Review,
-    # }
+    classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        #     "State": State,
+        #     "City": City,
+        #     "Amenity": Amenity,
+        #     "Place": Place,
+        #     "Review": Review,
+    }
 
     def all(self):
         """Returns the dictionary __objects"""
@@ -57,7 +57,7 @@ class FileStorage:
         """
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r", encoding="UTF-8") as file_exist:
-                json.load(file_exist)
-                # for key, value in new_dict.items():
-                #     base = FileStorage.classes[value["__class__"]](**value)
-                #     FileStorage.__objects[key] = base
+                dict_nnn = json.load(file_exist)
+                for key, val in dict_nnn.items():
+                    base = FileStorage.classes[val["__class__"]](**val)
+                    FileStorage.__objects[key] = base
