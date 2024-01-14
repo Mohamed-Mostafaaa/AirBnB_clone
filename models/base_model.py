@@ -8,14 +8,7 @@ import models
 
 
 class BaseModel:
-    """This is the parent class where all the classes will inherit from
-
-    Attributes:
-    id: the basemodel id
-    created_at : the datetime at creation
-    updated_at : the datetime of last update
-
-    """
+    """This is the parent class where all the classes will inherit from"""
 
     def __init__(self, *args, **kwargs):
         """Initializes class instances, attributes(uuid, created/updated)"""
@@ -38,12 +31,6 @@ class BaseModel:
     def __str__(self):
         """String representation of the objects of this class"""
         return "[{}] {} {}".format(self.__class__.__name__, self.id, self.__dict__)
-
-    def __repr__(self):
-        """
-        returns string representation
-        """
-        return self.__str__()
 
     def save(self):
         """updates the public instance attribute updated_at

@@ -3,6 +3,8 @@
 The console, to manage everything
 """
 import cmd
+import re
+
 from models.base_model import BaseModel
 
 from models.user import User
@@ -20,7 +22,7 @@ class HBNBCommand(cmd.Cmd):
 
     intro = "Welcome to the interpreter! Type help or ? to list commands.\n"
     prompt = "(hbnb) "
-    More_classes = {
+    __More_classes = {
         "BaseModel": BaseModel,
         "User": User,
         "State": State,
@@ -30,24 +32,24 @@ class HBNBCommand(cmd.Cmd):
         "Review": Review,
     }
 
-    def Create_Mo(self, line):
+    def do_create(self, line):
         """Creates a new object"""
         if len(line) == 0:
             print("** class name missing **")
-        elif line not in self.__class__.More_classes.keys():
+        elif line not in self.__class__.__More_classes.keys():
             print("** class doesn't exist **")
         else:
-            obj = self.__class__.More_classes[line]()
+            obj = self.__class__.__More_classes[line]()
             obj.save()
             print(obj.id)
 
-    def Show_Mo(self, line):
+    def do_show(self, line):
         """Prints the string representation of an instance"""
         class_object = line.split(" ")
         if len(line) == 0:
             print("** class name missing **")
             return
-        elif class_object[0] not in self.__class__.More_classes.keys():
+        elif class_object[0] not in self.__class__.__More_classes.keys():
             print("** class doesn't exist **")
             return
         elif len(class_object) == 1:
@@ -62,14 +64,14 @@ class HBNBCommand(cmd.Cmd):
                 obj = instancesssss[key]
                 print(str(obj))
 
-    def Destroy_Mo(self, args):
+    def do_destroy(self, args):
         """Destroys an object based on the Class Name and ID"""
 
         target_list = args.split(" ")
         if len(args) == 0:
             print("** class name missing **")
             return
-        elif target_list[0] not in self.__class__.More_classes.keys():
+        elif target_list[0] not in self.__class__.__More_classes.keys():
             print("** class doesn't exist **")
             return
         elif len(target_list) == 1:
@@ -84,7 +86,7 @@ class HBNBCommand(cmd.Cmd):
                 del all_instances[key]
                 storage.save()
 
-    def all_Mo(self, line):
+    def do_all(self, line):
         """Print string representation of all instances"""
         li_obj = []
         objs = storage.all()
@@ -107,13 +109,13 @@ class HBNBCommand(cmd.Cmd):
                 li_obj.append(val)
         print(li_obj)
 
-    def Update_Mo(self, line):
+    def do_update(self, line):
         """Updates attributes of an object"""
         updatesss = line.split(" ")
         if len(line) == 0:
             print("** class name missing **")
             return
-        elif updatesss[0] not in __class__.More_classes.keys():
+        elif updatesss[0] not in __class__.__More_classes.keys():
             print("** class doesn't exist **")
             return
         elif len(updatesss) == 1:
@@ -131,32 +133,29 @@ class HBNBCommand(cmd.Cmd):
             else:
                 obj = inst_ssss[k]
                 setattr(obj, updatesss[2], updatesss[3])
-                storage.save()
+        storage.save()
 
-    # def emptyline(self):
-    #     """Overwrite default behavior to repeat last cmd"""
-    #     pass
+    def do_count(self, arg):
+        """Count all instances of a class"""
+        arggg = arg.split(" ")
+        cou = 0
+        for vall in storage.all().values():
+            if arggg[0] == type(vall).__name__:
+                cou += 1
+        print(cou)
 
-    # def do_operations(self, args):
-    #     """Do operations on objects"""
+    def do_quit(self, args):
+        """Quits the interpreter"""
+        raise SystemExit
 
-    # def do_EOF(self, arg):
-    #     """Handles EOF to exit program"""
-    #     print()
-    #     return True
+    def emptyline(self):
+        """Overwrite default behavior to repeat last cmd"""
+        pass
 
-    # def do_quit(self, args):
-    #     """Quits the interpreter"""
-    #     raise SystemExit
-
-    # def do_count(self, arg):
-    #     """Count all instances of a class"""
-    #     to_count = args.split(" ")
-    #     instances = 0
-    #     for obj_ in storage.all().values():
-    #         if to_count[0] == type(obj_).__name__:
-    #             instances += 1
-    #     print(instances)
+    def do_EOF(self, arg):
+        """Handles EOF to exit program"""
+        print("")
+        return True
 
 
 if __name__ == "__main__":

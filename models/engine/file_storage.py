@@ -24,7 +24,7 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
-    More_Classes = {
+    __More_Classes = {
         "BaseModel": BaseModel,
         "User": User,
         "State": State,
@@ -59,5 +59,5 @@ class FileStorage:
             with open(FileStorage.__file_path, "r", encoding="UTF-8") as file_exist:
                 dict_nnn = json.load(file_exist)
                 for key, val in dict_nnn.items():
-                    base = FileStorage.More_Classes[val["__class__"]](**val)
+                    base = FileStorage.__More_Classes[val["__class__"]](**val)
                     FileStorage.__objects[key] = base
