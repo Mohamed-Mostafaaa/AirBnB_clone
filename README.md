@@ -15,7 +15,7 @@ The project currently only implements the back-end console.
 
 ## About
 
-This is the First Project towards our AirBnB clone project at [ALX](alxafrica.com). Done by [Mohamed](https://github.com/Mohamed-Mostafa) and [Eman](https://github.com/emanelkamel)
+This is the First Project towards our AirBnB clone project at [ALX](alxafrica.com). Done by [Mohamed](https://github.com/Mohamed-Mostafaaa) and [Eman](https://github.com/emanelkamel)
 
 This is the first step towards building your first full web application: the AirBnB clone. This first step is very important because you will use what you build during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration
 
@@ -129,7 +129,7 @@ All tests should also pass in non-interactive mode:` $ echo "python3 -m unittest
 
 ## Testing :straight_ruler:
 
-Unittests for the AirBnB project are defined in the [tests](./tests) 
+Unittests for the AirBnB project are defined in the [tests](./tests)
 folder. To run the entire test suite simultaneously, execute the following command:
 
 ```
@@ -143,5 +143,6 @@ $ python3 unittest -m tests/test_console.py
 ```
 
 ## Authors :black_nib:
-* **Mohamed Mostafa** <[Mohamed-Mostafaaa](https://github.com/Mohamed-Mostafaaa)>
-* **Eman Elkamel** <[emanelkamed](https://github.com/emanelkamed)>
+
+- **Mohamed Mostafa** <[Mohamed-Mostafaaa](https://github.com/Mohamed-Mostafaaa)>
+- **Eman Elkamel** <[emanelkamed](https://github.com/emanelkamed)>
